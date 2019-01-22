@@ -5,7 +5,7 @@ import ssl
 import sys
 
 def get_tls_cert_exp_date(host, port):
-    tls_cert_exp_date = None
+    tls_cert_exp_date = ""
 
     context = ssl.SSLContext()
     context.verify_mode = ssl.CERT_REQUIRED
@@ -50,9 +50,9 @@ def get_tls_cert_exp_date(host, port):
         req.shutdown(socket.SHUT_RDWR)
     except:
         pass
-
-    req.close()
+    else:
+        req.close()
 
     return tls_cert_exp_date
 
-print(get_tls_cert_exp_date('www.google.com', 444))
+print(get_tls_cert_exp_date('www.google.com', 443))
